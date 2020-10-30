@@ -1,7 +1,7 @@
 package com.n26.constants;
 
 public class Constants {
-	
+
 	public static final String EMPTY_BODY = "Body cannot be empty";
 	public static final String AMOUNT_REQUIRED = "Amount is required";
 	public static final String TIMESTAMP_REQUIRED = "Timestamp is required";

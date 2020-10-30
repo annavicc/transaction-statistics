@@ -19,7 +19,7 @@ public class TransactionValidator {
 		validateRequest(dto);
 		validateLifetime(dto);
 	}
-	
+
 	private void validateRequest(RequestTransactionDTO dto) {
 		if (dto == null) {
 			throw new ValidationErrorException(Constants.EMPTY_BODY);
@@ -34,15 +34,15 @@ public class TransactionValidator {
 			throw new ValidationErrorException(Constants.TIMESTAMP_REQUIRED);
 		}
 	}
-	
+
 	private void validateLifetime(RequestTransactionDTO dto) {
 		LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
-		
+
 		if (dto.getTimestamp().isAfter(now)) {
 			throw new UnprocessableTransactionException(Constants.FUTURE_TRANSACTION);
 		} else if (Duration.between(dto.getTimestamp(), now).toMillis() > Constants.TRANSACTION_TIMEOUT_MILLIS) {
 			throw new TransactionTimeoutExpection(Constants.TRANSACTION_TIMEOUT);
 		}
 	}
-		
+
 }

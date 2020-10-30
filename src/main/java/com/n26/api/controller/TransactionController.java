@@ -25,10 +25,10 @@ public class TransactionController {
 	public TransactionController(TransactionService transactionService) {
 		this.transactionService = transactionService;
 	}
-	
+
 	@Autowired
-    private TransactionValidator validator;
-	
+	private TransactionValidator validator;
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void post(@RequestBody RequestTransactionDTO transactionDTO) {

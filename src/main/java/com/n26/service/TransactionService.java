@@ -16,15 +16,15 @@ public class TransactionService {
 	public TransactionService(StatisticsService statisticsService) {
 		this.statisticsService = statisticsService;
 	}
-	
+
 	public void addTransaction(RequestTransactionDTO dto) {
 		Transaction transaction = converter.toEntity(dto);
 		statisticsService.addTransaction(transaction);
 
 	}
-	
+
 	public void deleteTransactions() {
 		this.statisticsService.deleteAllTransactions();
 	}
-	
+
 }

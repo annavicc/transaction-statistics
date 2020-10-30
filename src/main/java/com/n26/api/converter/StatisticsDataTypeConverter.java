@@ -9,7 +9,7 @@ public class StatisticsDataTypeConverter {
 		if (model == null) {
 			return null;
 		}
-		
+
 		return new ResponseStatisticsDTO(
 				model.getSum().toPlainString(),
 				model.getAvg().toPlainString(),

@@ -15,46 +15,46 @@ import com.n26.exceptions.UnprocessableTransactionException;
 public class RequestTransactionDTO {
 
 	private BigDecimal amount;
-	
+
 	private LocalDateTime timestamp;
-	
+
 	public RequestTransactionDTO(String amount, String timestamp) {
 		this.amount = convertAmountFromString(amount);
 		this.timestamp = convertTimestampFromString(timestamp);
 	}
-	
+
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
-	
+
 	public BigDecimal getAmount() {
 		return this.amount;
 	}
-	
+
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
-	
+
 	public LocalDateTime getTimestamp() {
 		return this.timestamp;
 	}
-	
+
 	private LocalDateTime convertTimestampFromString(String timestamp) {
 		if (timestamp.isBlank()) {
 			return null;
 		}
 		Pattern p = Pattern.compile(Constants.TIMESTAMP_REGEX);
-		
+
 		if (!p.matcher(timestamp).matches()) {
 			throw new UnprocessableTransactionException(Constants.INVALID_TIMESTAMP);
 		}
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
-	    final ZonedDateTime parsed = ZonedDateTime
-	    		.parse(timestamp, formatter.withZone(ZoneId.of("UTC")));
-	    return parsed.toLocalDateTime();
+		final ZonedDateTime parsed = ZonedDateTime
+				.parse(timestamp, formatter.withZone(ZoneId.of("UTC")));
+		return parsed.toLocalDateTime();
 	}
-	
+
 	private BigDecimal convertAmountFromString(String amount) {
 		if (amount.isBlank()) {
 			return null;
@@ -63,8 +63,8 @@ public class RequestTransactionDTO {
 		if (!p.matcher(amount).matches()) {
 			throw new UnprocessableTransactionException(Constants.INVALID_AMOUNT);
 		}
-		
+
 		return new BigDecimal(amount);
 	}
-	
+
 }

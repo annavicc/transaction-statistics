@@ -9,7 +9,7 @@ public class TransactionDataTypeConverter {
 		if (dto == null) {
 			return null;
 		}
-		
+
 		return new Transaction(dto.getAmount(), dto.getTimestamp());
 	}
 }

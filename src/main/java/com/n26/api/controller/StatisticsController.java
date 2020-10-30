@@ -14,7 +14,7 @@ import com.n26.service.StatisticsService;
 @RequestMapping("/statistics")
 public class StatisticsController {
 
-	
+
 	private final StatisticsService statisticsService;
 
 	public StatisticsController(StatisticsService statisticsService) {
@@ -22,8 +22,8 @@ public class StatisticsController {
 	}
 
 	@GetMapping
-    public ResponseEntity<ResponseStatisticsDTO> getStatistics() {
-        return new ResponseEntity<>(statisticsService.getStatistics(), HttpStatus.OK);
-    }
+	public ResponseEntity<ResponseStatisticsDTO> getStatistics() {
+		return new ResponseEntity<>(statisticsService.getStatistics(), HttpStatus.OK);
+	}
 
 }
